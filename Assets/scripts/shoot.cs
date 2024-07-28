@@ -49,7 +49,7 @@ public class shoot : MonoBehaviour
                 targetObject = SelectTarget();
             }
         }
-        if(targetObject != null)
+        if (targetObject != null)
         {
             //瞄准
             LookTarget();
@@ -59,15 +59,15 @@ public class shoot : MonoBehaviour
     private void Shoot()//射击方法
     {
         shootTimer += Time.deltaTime;
-        if (shootTimer > (shootDuration-Stspeed))
+        if (shootTimer > (shootDuration - Stspeed))
         {
             Shooting();
-            shootTimer = 0 ;
+            shootTimer = 0;
         }
     }
     private void Shooting()//子弹生成
     {
-        bullet bu = GameObject.Instantiate(bulletes, ShootPointTransform.position,Quaternion.identity);
+        bullet bu = GameObject.Instantiate(bulletes, ShootPointTransform.position, Quaternion.identity);
         bu.SetDirection(dir);
         bu.SetSpeed(bulletSpeed + SpeedBost);
         bu.SetATKValue(atkValue + AtkBost);
@@ -75,13 +75,13 @@ public class shoot : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)//敌人进入攻击范围,enemy指的是敌人tag
     {
-        if(other.tag == "enemy")
+        if (other.tag == "enemy")
         {
             if (!enemy.Contains(other.gameObject))
             {
                 enemy.Add(other.gameObject);
             }
-            }
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)//敌人离开攻击范围
@@ -89,8 +89,8 @@ public class shoot : MonoBehaviour
         if (other.tag == "enemy")
         {
             if (targetObject != null && other.name == targetObject.name)
-            { 
-                targetObject = null; 
+            {
+                targetObject = null;
             }
             if (enemy.Contains(other.gameObject))
             {
@@ -107,7 +107,7 @@ public class shoot : MonoBehaviour
         for (int i = 0; i < enemy.Count; i++)
         {
             distance = Vector2.Distance(transform.position, enemy[i].transform.position);
-            if(distance <= dis)
+            if (distance <= dis)
             {
                 dis = distance;
                 temp = enemy[i];
@@ -118,27 +118,27 @@ public class shoot : MonoBehaviour
 
     private void LookTarget()//瞄准方法
     {
-        dir = targetObject.transform.position-transform.position;
+        dir = targetObject.transform.position - transform.position;
         dir = dir.normalized;
-        float angle = Mathf.Atan2(dir.y,dir.x)*Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         turret.transform.rotation = Quaternion.Euler(0, 0, angle);
         Shoot();
     }
 
     private void Blood_loss()//血量流失和损毁的方法
     {
-            Hp--;
-            if(Hp <= 0)
-            {
-                Destroy(this.gameObject);
-                GetComponent<Collider2D>().enabled = false;
-            }
+        Hp--;
+        if (Hp <= 0)
+        {
+            Destroy(this.gameObject);
+            GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     public void SetAtkBost(int AtkBost)//以下为外部传入增益的方法
     {
         this.AtkBost = AtkBost;
-    } 
+    }
 
     public void SetSpeedBost(float SpeedBost)
     {

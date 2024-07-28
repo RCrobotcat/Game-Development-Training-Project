@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    public static playerController instance { get; private set; }
+
     private float horizontal;
     private Vector2 lookDirection = new Vector2(1, 0);
     public float speed = 7f; // Adjustable move speed
@@ -28,7 +30,7 @@ public class playerController : MonoBehaviour
     public Vector2 wallJumpSpeed = new Vector2(10, 10);
     public float wallJumpTime = 0.1f;
     bool isWallJumping;
-    float checkDistance = 0.8f;
+    float checkDistance = 1.0f;
 
     public float dashDistance = 10f;
     public float dashGap = 1f;
@@ -36,6 +38,17 @@ public class playerController : MonoBehaviour
     bool isDashing;
 
     public Ghost ghost;
+
+    public int maxHealth = 5;
+    int currentHealth;
+    public int health { get { return currentHealth; } }
+
+    bool isInvincible;
+    float invincibleTimer;
+    public float timeInvincible = 1f; // Adjustable invincible time
+
+    healthBarForPlayer healthBar;
+    HealthSystemForDummies healthSystem;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -45,13 +58,23 @@ public class playerController : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        healthSystem = GetComponent<HealthSystemForDummies>();
+        healthBar = GetComponentInChildren<healthBarForPlayer>();
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         playerAnimator = GetComponent<Animator>();
+
         ResetJump();
+
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -104,17 +127,29 @@ public class playerController : MonoBehaviour
             playerAnimator.SetFloat("JumpOrFall", 0);
         }
 
+        // Gap time between dashes
         if (dashGapSeconds > 0)
         {
             dashGapSeconds -= Time.deltaTime;
         }
 
+        // start the coroutine of dashing
         if (Input.GetKeyDown(KeyCode.LeftShift) && horizontal != 0)
         {
-            if(dashGapSeconds <= 0)
+            if (dashGapSeconds <= 0)
             {
                 StartCoroutine(Dash(horizontal));
                 dashGapSeconds = dashGap;
+            }
+        }
+
+        // Invincible time logic
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+            {
+                isInvincible = false;
             }
         }
     }
@@ -214,5 +249,29 @@ public class playerController : MonoBehaviour
         ghost.makeGhost = false;
         rigidbody2d.gravityScale = gravity;
         dashGapSeconds = dashGap;
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        /*Debug.Log("ChangeHealth: " + amount);*/
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+
+            playerAnimator.SetTrigger("isHit");
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+
+        healthSystem.AddToCurrentHealth(amount);
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
+        /*Debug.Log(currentHealth);*/
+
+        if (currentHealth <= 0)
+        {
+            healthSystem.Kill();
+        }
     }
 }
