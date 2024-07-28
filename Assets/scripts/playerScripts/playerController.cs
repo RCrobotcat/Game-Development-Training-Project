@@ -239,6 +239,7 @@ public class playerController : MonoBehaviour
     IEnumerator Dash(float direction)
     {
         isDashing = true;
+        isInvincible = true;
         ghost.makeGhost = true; // Create a ghost object
         rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0f);
         rigidbody2d.AddForce(new Vector2(dashDistance * direction, 0), ForceMode2D.Impulse);
@@ -247,6 +248,7 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         isDashing = false;
         ghost.makeGhost = false;
+        isInvincible = false;
         rigidbody2d.gravityScale = gravity;
         dashGapSeconds = dashGap;
     }
