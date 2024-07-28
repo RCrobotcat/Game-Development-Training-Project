@@ -10,5 +10,9 @@ public class testRecovery : MonoBehaviour
         {
             playerController.instance.ChangeHealth(1);
         }
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            monsterGhost.instance.TakeDamage(1);
+        }
     }
 }

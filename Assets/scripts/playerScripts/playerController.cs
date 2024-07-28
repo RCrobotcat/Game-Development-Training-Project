@@ -32,7 +32,7 @@ public class playerController : MonoBehaviour
     bool isWallJumping;
     float checkDistance = 1.0f;
 
-    public float dashDistance = 10f;
+    public float dashDistance = 20f;
     public float dashGap = 1f;
     float dashGapSeconds;
     bool isDashing;
@@ -55,6 +55,11 @@ public class playerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             ResetJump();
+        }
+
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            ChangeHealth(-1);
         }
     }
 
@@ -235,23 +240,60 @@ public class playerController : MonoBehaviour
         isWallJumping = false;
     }
 
-    // Dash Coroutine
     IEnumerator Dash(float direction)
     {
         isDashing = true;
         isInvincible = true;
-        ghost.makeGhost = true; // Create a ghost object
-        rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0f);
+        ghost.makeGhost = true;
+        rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0);
         rigidbody2d.AddForce(new Vector2(dashDistance * direction, 0), ForceMode2D.Impulse);
-        float gravity = rigidbody2d.gravityScale;
+        float originalGravity = rigidbody2d.gravityScale;
         rigidbody2d.gravityScale = 0;
-        yield return new WaitForSeconds(0.2f);
+
+        yield return null;  // Wait for one frame to let physics engine update
+
+        float dashTime = 0.2f;
+        float elapsedTime = 0f;
+
+        // Ignore collisions with monsters
+        while (elapsedTime < dashTime)
+        {
+            elapsedTime += Time.deltaTime;
+            Collider2D[] hits_1 = Physics2D.OverlapCircleAll(transform.position, 1.0f);
+            foreach (var hit in hits_1)
+            {
+                if (hit.CompareTag("Monster"))
+                {
+                    Collider2D monsterCollider = hit.GetComponent<Collider2D>();
+                    if (monsterCollider != null)
+                    {
+                        Physics2D.IgnoreCollision(monsterCollider, GetComponent<Collider2D>(), true);
+                    }
+                }
+            }
+            yield return null;
+        }
+
         isDashing = false;
         ghost.makeGhost = false;
         isInvincible = false;
-        rigidbody2d.gravityScale = gravity;
-        dashGapSeconds = dashGap;
+        rigidbody2d.gravityScale = originalGravity;
+
+        // Ensure collisions are re-enabled
+        Collider2D[] hits_2 = Physics2D.OverlapCircleAll(transform.position, 5.0f);
+        foreach (var hit in hits_2)
+        {
+            if (hit.CompareTag("Monster"))
+            {
+                Collider2D monsterCollider = hit.GetComponent<Collider2D>();
+                if (monsterCollider != null)
+                {
+                    Physics2D.IgnoreCollision(monsterCollider, GetComponent<Collider2D>(), false);
+                }
+            }
+        }
     }
+
 
     public void ChangeHealth(int amount)
     {

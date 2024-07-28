@@ -167,7 +167,7 @@ MonoBehaviour:
   wallSlideSpeed: 2
   wallJumpSpeed: {x: 12, y: 12}
   wallJumpTime: 0.1
-  dashDistance: 15
+  dashDistance: 20
   dashGap: 1
   ghost: {fileID: 1913419169697242464}
   maxHealth: 5
