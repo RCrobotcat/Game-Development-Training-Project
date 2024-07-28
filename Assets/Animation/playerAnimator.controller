@@ -74,7 +74,7 @@ AnimatorStateMachine:
     m_Position: {x: 650, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5141061551103057006}
-    m_Position: {x: 1070, y: 10, z: 0}
+    m_Position: {x: 1010, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2196051367818724873}
     m_Position: {x: 1010, y: 130, z: 0}
@@ -85,7 +85,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 1320, y: 130, z: 0}
+  m_ExitPosition: {x: 1440, y: 160, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -6070973571400727824}
 --- !u!1101 &-8382699637887910420
@@ -470,6 +470,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: isWallJumping
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isDashing
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

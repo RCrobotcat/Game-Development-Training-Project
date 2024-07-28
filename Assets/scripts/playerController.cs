@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -10,7 +11,7 @@ public class playerController : MonoBehaviour
     public float jumpForce = 5f; // Adjustable jump force
 
     private Rigidbody2D rigidbody2d;
-    private SpriteRenderer playerSprite;
+    public SpriteRenderer playerSprite;
 
     bool isGrounded;
     bool doubleJumpUsed;
@@ -28,6 +29,13 @@ public class playerController : MonoBehaviour
     public float wallJumpTime = 0.1f;
     bool isWallJumping;
     float checkDistance = 0.8f;
+
+    public float dashDistance = 10f;
+    public float dashGap = 1f;
+    float dashGapSeconds;
+    bool isDashing;
+
+    public Ghost ghost;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -50,7 +58,10 @@ public class playerController : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
-        rigidbody2d.velocity = new Vector2(horizontal * speed, rigidbody2d.velocity.y);
+        if (!isDashing)
+        {
+            rigidbody2d.velocity = new Vector2(horizontal * speed, rigidbody2d.velocity.y);
+        }
 
         if (!Mathf.Approximately(horizontal, 0.0f))
         {
@@ -84,12 +95,27 @@ public class playerController : MonoBehaviour
             if (rigidbody2d.velocity.y < -0.1f)
             {
                 playerAnimator.SetFloat("JumpOrFall", -1);
+                isGrounded = false;
             }
         }
         else
         {
             playerAnimator.SetBool("isJumpOrFall", false);
             playerAnimator.SetFloat("JumpOrFall", 0);
+        }
+
+        if (dashGapSeconds > 0)
+        {
+            dashGapSeconds -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && horizontal != 0)
+        {
+            if(dashGapSeconds <= 0)
+            {
+                StartCoroutine(Dash(horizontal));
+                dashGapSeconds = dashGap;
+            }
         }
     }
 
@@ -145,7 +171,7 @@ public class playerController : MonoBehaviour
         }*/
     }
 
-    // 墙壁上下滑
+    // Slide on the wall
     private void WallSlide()
     {
         UpdateWallCheck();
@@ -164,7 +190,7 @@ public class playerController : MonoBehaviour
 
         if (isWallJumping)
         {
-            rigidbody2d.velocity = new Vector2(wallJumpSpeed.x * -horizontal, wallJumpSpeed.y); // 反向跳跃
+            rigidbody2d.velocity = new Vector2(wallJumpSpeed.x * -horizontal, wallJumpSpeed.y); // Jump off the wall by moving in the opposite direction
             playerAnimator.SetBool("isWallJumping", false);
         }
     }
@@ -172,5 +198,21 @@ public class playerController : MonoBehaviour
     private void stopJump()
     {
         isWallJumping = false;
+    }
+
+    // Dash Coroutine
+    IEnumerator Dash(float direction)
+    {
+        isDashing = true;
+        ghost.makeGhost = true; // Create a ghost object
+        rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0f);
+        rigidbody2d.AddForce(new Vector2(dashDistance * direction, 0), ForceMode2D.Impulse);
+        float gravity = rigidbody2d.gravityScale;
+        rigidbody2d.gravityScale = 0;
+        yield return new WaitForSeconds(0.2f);
+        isDashing = false;
+        ghost.makeGhost = false;
+        rigidbody2d.gravityScale = gravity;
+        dashGapSeconds = dashGap;
     }
 }
