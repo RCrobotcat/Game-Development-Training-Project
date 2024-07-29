@@ -3,15 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fire
+  - Ground
+  - Monster
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Confiner
   - Water
   - UI
-  - 
+  - Wall
   - 
   - 
   - 
