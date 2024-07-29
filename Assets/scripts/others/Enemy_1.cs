@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //敌人模板
-public class Enemy : MonoBehaviour
+public class Enemy_1 : MonoBehaviour
 {
     private int HP = 1000;
     private int currentHp;

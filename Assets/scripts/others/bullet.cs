@@ -40,7 +40,7 @@ public class bullet : MonoBehaviour
         if(collision.tag == "enemy")
         {
             Destroy(this.gameObject);
-            collision.GetComponent<Enemy>().TakeDamage(atkValue);
+            collision.GetComponent<Enemy_1>().TakeDamage(atkValue);
         }
     }
 }
