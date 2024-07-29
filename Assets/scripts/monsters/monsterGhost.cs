@@ -10,11 +10,13 @@ public class monsterGhost : MonoBehaviour
 
     public float changeTime = 2.0f;
     public float speed = 5f;
+    public float speed02;//减速
     bool left;
 
     Rigidbody2D rb;
     float timer;
     int direction = 1;
+    
 
     private SpriteRenderer sprite;
     private Animator animator;
@@ -30,6 +32,11 @@ public class monsterGhost : MonoBehaviour
     float textTimer = 2.0f;
     float textTimerSeconds;
 
+    private int iceTime;
+    private float icespeed;
+
+    private bool isice = true;
+    public SpriteRenderer spriteRenderer;
     private void Awake()
     {
         instance = this;
@@ -38,6 +45,7 @@ public class monsterGhost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();    
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -49,6 +57,7 @@ public class monsterGhost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         timer -= Time.deltaTime;
         if (timer < 0)
         {
@@ -82,11 +91,11 @@ public class monsterGhost : MonoBehaviour
 
         if (left)
         {
-            position.x = position.x + Time.deltaTime * speed * direction;
+            position.x = position.x + Time.deltaTime * (speed-speed02) * direction;
         }
         else
         {
-            position.x = position.x + Time.deltaTime * speed * direction;
+            position.x = position.x + Time.deltaTime * (speed-speed02) * direction;
         }
 
         if (!isDead)
@@ -120,4 +129,17 @@ public class monsterGhost : MonoBehaviour
             setTriggerToDie();
         }
     }
+
+    public void decelerate(float speed02)//减速的方法
+    {
+        Color newColor = new Color(0.6f,0.7f,0.9f);
+        spriteRenderer.color = newColor;
+        this.speed02 = speed02;
+    }
+    public void color()//色调还原
+    {
+        Color newColor = new Color(1, 1, 1);
+        spriteRenderer.color = newColor;
+    }
+
 }

@@ -287,6 +287,7 @@ MonoBehaviour:
   bulletes: {fileID: 2625611857385753478, guid: bfbf983e532dd8142a36369f3fc4a9ac, type: 3}
   bulletSpeed: 15
   atkValue: 25
+  Hp: 20
 --- !u!50 &9199345347620026529
 Rigidbody2D:
   serializedVersion: 4
