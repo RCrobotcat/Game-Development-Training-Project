@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852875334351278608}
-  - component: {fileID: 852875334351278615}
+  - component: {fileID: 5015216158579246925}
   - component: {fileID: 852875334351278609}
   m_Layer: 9
   m_Name: ExplosionRange
@@ -33,8 +33,8 @@ Transform:
   m_Father: {fileID: 852875334958452691}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &852875334351278615
-CapsuleCollider2D:
+--- !u!58 &5015216158579246925
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -47,8 +47,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 15, y: 15}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 6
 --- !u!114 &852875334351278609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,10 +73,10 @@ GameObject:
   - component: {fileID: 852875334958452691}
   - component: {fileID: 852875334958452690}
   - component: {fileID: 852875334958452689}
-  - component: {fileID: 852875334958452695}
   - component: {fileID: 852875334958452694}
   - component: {fileID: 852875334958452693}
   - component: {fileID: 852875334958452684}
+  - component: {fileID: 4130437749656676701}
   m_Layer: 9
   m_Name: Bomb
   m_TagString: Monster
@@ -98,6 +98,7 @@ Transform:
   m_Children:
   - {fileID: 852875334351278608}
   - {fileID: 852875335435431821}
+  - {fileID: 7231750970858193273}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,8 +140,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 58063413
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -118907959, guid: 5fb4449f586775a4fa2682d840f2b8b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,22 +174,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!70 &852875334958452695
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852875334958452692}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.4231735, y: 0}
-  m_Size: {x: 6, y: 6}
-  m_Direction: 0
 --- !u!50 &852875334958452694
 Rigidbody2D:
   serializedVersion: 4
@@ -205,7 +190,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30a3cf7de5c0ccd46a0a49499c1be8e0, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -237,8 +222,10 @@ MonoBehaviour:
   isDead: 0
   isStop: 0
   healthText: {fileID: 852875335896922909}
-  healthTextGameObject: {fileID: 852875335896922914}
+  healthTextGameObject: {fileID: 852875335435431820}
+  healthCollectable: {fileID: 666293531710616347, guid: a62c8ab0fe739704aa511e7f10387120, type: 3}
   ExplosionRange: {fileID: 852875334351278614}
+  au: {fileID: 4822924531066423216}
 --- !u!70 &852875334958452684
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -255,6 +242,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.23987968, y: 0}
   m_Size: {x: 2.5202408, y: 3.3749998}
   m_Direction: 0
+--- !u!58 &4130437749656676701
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852875334958452692}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!1 &852875335435431820
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,13 +270,13 @@ GameObject:
   - component: {fileID: 852875335435431816}
   - component: {fileID: 852875335435431823}
   - component: {fileID: 852875335435431822}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &852875335435431821
 RectTransform:
   m_ObjectHideFlags: 0
@@ -283,7 +286,7 @@ RectTransform:
   m_GameObject: {fileID: 852875335435431820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.10608332, y: 0.10608332, z: 0.10608332}
+  m_LocalScale: {x: 0.06365, y: 0.06365, z: 0.06365}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 852875335896922915}
@@ -292,7 +295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.38, y: 0.29}
+  m_AnchoredPosition: {x: 0.38, y: 1.11}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &852875335435431816
@@ -313,7 +316,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 58063413
   m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &852875335435431823
@@ -368,13 +371,13 @@ GameObject:
   - component: {fileID: 852875335896922910}
   - component: {fileID: 852875335896922909}
   - component: {fileID: 852875335896922908}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &852875335896922915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -392,7 +395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.4, y: 16.8}
+  m_AnchoredPosition: {x: 4.2, y: 14.4}
   m_SizeDelta: {x: 23.582, y: 11.304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &852875335896922910
@@ -436,9 +439,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '10/10
-
-'
+  m_Text: 5/5
 --- !u!95 &852875335896922908
 Animator:
   serializedVersion: 5
@@ -459,3 +460,161 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!1 &5331366133304069966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7231750970858193273}
+  - component: {fileID: 7336205096676578594}
+  - component: {fileID: 4822924531066423216}
+  m_Layer: 0
+  m_Name: explosionAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7231750970858193273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331366133304069966}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5815525, y: 1.9896582, z: -0.056644414}
+  m_LocalScale: {x: 1.6666665, y: 1.6666665, z: 1.6666665}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 852875334958452691}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7336205096676578594
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331366133304069966}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 0.9
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4822924531066423216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331366133304069966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e93b4dfdf89734aafc13f938bae1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SfxAudio: {fileID: 7336205096676578594}
+  footStepSource: {fileID: 0}
+  PlayerWalk: {fileID: 0}
+  PlayerJump: {fileID: 0}
+  PlayerDash: {fileID: 0}
+  PlayerDeath: {fileID: 0}
+  PlayerHurted: {fileID: 0}
+  PlayerClimb: {fileID: 0}
+  MonsterWalk: {fileID: 0}
+  MonsterJump: {fileID: 0}
+  MonsterDeath: {fileID: 0}
+  MonsterHurted: {fileID: 8300000, guid: 5087d4c8158d22f4c896bdb9a2247e97, type: 3}
+  MonsterExplode: {fileID: 8300000, guid: 91aaf5728c6259b4b8939a1c878d9dbd, type: 3}
+  TurretPut: {fileID: 0}
+  TurretATK: {fileID: 0}
+  atkTowerPut: {fileID: 0}
+  playerHeal: {fileID: 0}

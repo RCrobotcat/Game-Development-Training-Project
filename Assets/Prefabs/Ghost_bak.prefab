@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1452936615435288449}
   - component: {fileID: 456741469766883859}
   - component: {fileID: 4118305077830568372}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,13 +115,13 @@ GameObject:
   - component: {fileID: 6822450843805395334}
   - component: {fileID: 7053812198348249286}
   - component: {fileID: 8460949122451311316}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4894313118979648082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ RectTransform:
   m_GameObject: {fileID: 6532197937462348693}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.10608332, y: 0.10608332, z: 0.10608332}
+  m_LocalScale: {x: 0.06365, y: 0.06365, z: 0.06365}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4995615999956506524}
@@ -140,7 +140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.49, y: -0.47}
+  m_AnchoredPosition: {x: 0.49, y: 0.21}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6822450843805395334
@@ -161,7 +161,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 58063413
   m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &7053812198348249286
@@ -279,8 +279,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 58063413
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -477264024, guid: 507c04303c520374bb9e1cecddfde6a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -309,7 +309,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30a3cf7de5c0ccd46a0a49499c1be8e0, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -377,4 +377,5 @@ MonoBehaviour:
   isDead: 0
   isStop: 0
   healthText: {fileID: 456741469766883859}
-  healthTextGameObject: {fileID: 6529999496866451212}
+  healthTextGameObject: {fileID: 6532197937462348693}
+  healthCollectable: {fileID: 666293531710616347, guid: a62c8ab0fe739704aa511e7f10387120, type: 3}

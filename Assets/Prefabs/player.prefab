@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1913419169697242464}
   - component: {fileID: 8333533894484779653}
   - component: {fileID: 6301674080427383399}
+  - component: {fileID: 2025837896}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -156,9 +157,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: -1416072187
+  m_SortingLayer: 9
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: b8548a135d778a845959a98c7383e419, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -183,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAlive: 1
-  CurrentHealth: 5
-  MaximumHealth: 5
+  CurrentHealth: 10
+  MaximumHealth: 10
   HasAnimationWhenHealthChanges: 1
   AnimationDuration: 0.2
   OnCurrentHealthChanged:
@@ -204,7 +205,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3448675415339398959}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -236,8 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookDirection: {x: 1, y: 0}
-  speed: 5
-  jumpForce: 14
+  speed: 10
+  jumpForce: 15
   playerSprite: {fileID: 0}
   wallCheck: {fileID: 7968898653614962870}
   wallLayer:
@@ -246,14 +247,15 @@ MonoBehaviour:
   wallSlideSpeed: 2
   wallJumpSpeed: {x: 12, y: 12}
   wallJumpTime: 0.1
-  dashDistance: 20
+  dashDistance: 200
   dashGap: 1
   ghost: {fileID: 1913419169697242464}
-  maxHealth: 5
+  maxHealth: 10
   timeInvincible: 1
   timeGapBetweenUseItem: 1
   healthBar: {fileID: 8080754079078884975}
   healthSystem: {fileID: 8670319359211455142}
+  au: {fileID: 0}
 --- !u!95 &8270216322377299459
 Animator:
   serializedVersion: 5
@@ -302,11 +304,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 8
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_GravityScale: 2.7
+  m_Material: {fileID: 6200000, guid: 30a3cf7de5c0ccd46a0a49499c1be8e0, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -324,6 +326,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!70 &2025837896
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448675415339398959}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0033348454, y: 0}
+  m_Size: {x: 0.49993625, y: 0.64000005}
+  m_Direction: 0
 --- !u!1 &8061931889840017489
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,22 +380,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3448675415339398957}
     m_Modifications:
-    - target: {fileID: 491573281883114408, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 671399164448138812, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1718018069716734297, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3346756490412358013, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 6012099269923024012, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -462,34 +464,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6401630165283899599, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 6628108152948583509, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
       propertyPath: m_Name
       value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628108152948583509, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6678619623018366955, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6995135666198816118, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
       propertyPath: magicSystem
       value: 
       objectReference: {fileID: 6375990365215900753}
-    - target: {fileID: 7608081427654036411, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318680760000867511, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e21e2e68b5086bb40950b95c5e31ac57, type: 3}
 --- !u!114 &65880837105691474 stripped

@@ -20,15 +20,15 @@ public class ItemOnWorld : MonoBehaviour
             }
             else if (thisItem.equiptable)
             {
-                if (!thisItem.isPickedUp)
-                {
-                    Destroy(gameObject);
-                    thisItem.isPickedUp = true;
-                }
+                /*if (!thisItem.isPickedUp)
+                {*/
+                Destroy(gameObject);
+                thisItem.isPickedUp = true;
+                /*}
                 else
                 {
                     Debug.Log("This projectile have already existed in your inventory.");
-                }
+                }*/
             }
         }
     }

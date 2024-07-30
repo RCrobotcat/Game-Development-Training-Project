@@ -7,6 +7,11 @@ TagManager:
   - Fire
   - Ground
   - Monster
+  - enemy
+  - shooter
+  - Kicker_Tower
+  - health
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -18,10 +23,10 @@ TagManager:
   - Player
   - Ground
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - CollectableTower
+  - Tower
+  - Bullet
+  - HeartAndMagic
   - 
   - 
   - 
@@ -52,6 +57,21 @@ TagManager:
     locked: 0
   - name: Front
     uniqueID: 2512802143
+    locked: 0
+  - name: CollectableTower
+    uniqueID: 633421237
+    locked: 0
+  - name: Tower
+    uniqueID: 4259805059
+    locked: 0
+  - name: HeartAndMagic
+    uniqueID: 2416296805
+    locked: 0
+  - name: Bullet
+    uniqueID: 3660585149
+    locked: 0
+  - name: Enemy
+    uniqueID: 58063413
     locked: 0
   - name: Player
     uniqueID: 2878895109

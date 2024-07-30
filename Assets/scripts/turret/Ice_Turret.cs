@@ -10,13 +10,22 @@ public class Ice_Turret : MonoBehaviour
     private int Chp;//当前血量
     public bool isFreazon = true;
     public float decelerateSpeed;//减速
+
+    public PolygonCollider2D TowerCollider2d;
+
+    float moveSpeedSave;
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         Chp = Hp;
         InvokeRepeating("Blood_loss", 1, 1);//流血的时间控制
+    }
 
+    private void Update()
+    {
+        ignoreCollisionOfMonster();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +34,7 @@ public class Ice_Turret : MonoBehaviour
         {
             if (isFreazon)
             {
-                monsterGhost.instance.decelerate(decelerateSpeed);
+                collision.GetComponent<Enemy>().decelerate(decelerateSpeed);
             }
         }
     }
@@ -34,8 +43,8 @@ public class Ice_Turret : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
-            collision.GetComponent<monsterGhost>().decelerate(0);
-            collision.GetComponent<monsterGhost>().color();
+            collision.GetComponent<Enemy>().decelerate(-decelerateSpeed);
+            collision.GetComponent<Enemy>().color();
         }
     }
 
@@ -52,5 +61,21 @@ public class Ice_Turret : MonoBehaviour
     public void TakeDamage(int damage)//受伤函数
     {
         Chp -= damage;
+    }
+
+    private void ignoreCollisionOfMonster()
+    {
+        Collider2D[] hits_1 = Physics2D.OverlapCircleAll(transform.position, 10.0f);
+        foreach (var hit in hits_1)
+        {
+            if (hit.gameObject.CompareTag("Monster"))
+            {
+                CapsuleCollider2D monsterCollider = hit.GetComponent<CapsuleCollider2D>();
+                if (monsterCollider != null)
+                {
+                    Physics2D.IgnoreCollision(monsterCollider, TowerCollider2d, true);
+                }
+            }
+        }
     }
 }

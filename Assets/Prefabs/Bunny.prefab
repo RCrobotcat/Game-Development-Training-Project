@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 58063413
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -1349990366, guid: 1e6244822a08bb5498cd7fe48ba686d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30a3cf7de5c0ccd46a0a49499c1be8e0, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   jumpForce: 1.6
   checkRange: 15
-  health_Max: 3
+  health_Max: 10
   health_Current: 0
   BottomOffset: {x: 0.09, y: -1.66}
   checkRaduis_bottom: 0.1
@@ -173,7 +173,8 @@ MonoBehaviour:
   isDead: 0
   isStop: 0
   healthText: {fileID: 935051577813203567}
-  healthTextGameObject: {fileID: 935051577813203563}
+  healthTextGameObject: {fileID: 935051578741850302}
+  healthCollectable: {fileID: 666293531710616347, guid: a62c8ab0fe739704aa511e7f10387120, type: 3}
 --- !u!1 &935051577813203563
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,13 +187,13 @@ GameObject:
   - component: {fileID: 935051577813203561}
   - component: {fileID: 935051577813203567}
   - component: {fileID: 935051577813203560}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &935051577813203566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -289,13 +290,13 @@ GameObject:
   - component: {fileID: 935051578741850242}
   - component: {fileID: 935051578741850301}
   - component: {fileID: 935051578741850300}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &935051578741850303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -335,7 +336,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 58063413
   m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &935051578741850301

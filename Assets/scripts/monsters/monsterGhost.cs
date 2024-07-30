@@ -10,7 +10,7 @@ public class monsterGhost : MonoBehaviour
 
     public float changeTime = 2.0f;
     public float speed = 5f;
-    public float speed02;//减速
+    public float speed02;
     bool left;
 
     Rigidbody2D rb;
@@ -129,16 +129,15 @@ public class monsterGhost : MonoBehaviour
         }
     }
 
-    public void decelerate(float speed02)//减速的方法
+    public void decelerate(float speed02)
     {
         Color newColor = new Color(0.6f,0.7f,0.9f);
         spriteRenderer.color = newColor;
         this.speed02 = speed02;
     }
-    public void color()//色调还原
+    public void color()
     {
         Color newColor = new Color(1, 1, 1);
         spriteRenderer.color = newColor;
     }
-
 }

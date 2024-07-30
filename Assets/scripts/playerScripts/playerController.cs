@@ -33,14 +33,14 @@ public class playerController : MonoBehaviour
     bool isWallJumping;
     float checkDistance = 1.0f;
 
-    public float dashDistance = 20f;
+    public float dashDistance = 100f;
     public float dashGap = 1f;
     float dashGapSeconds;
     bool isDashing;
 
     public Ghost ghost;
 
-    public int maxHealth = 5;
+    public int maxHealth = 10;
     int currentHealth;
     public int health { get { return currentHealth; } }
 
@@ -53,6 +53,8 @@ public class playerController : MonoBehaviour
 
     public healthBarForPlayer healthBar;
     public HealthSystemForDummies healthSystem;
+
+    public audio au;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -97,6 +99,18 @@ public class playerController : MonoBehaviour
         {
             lookDirection.Set(horizontal, 0);
             lookDirection.Normalize();
+            if (!au.footStepSource.isPlaying && isGrounded)
+            {
+                au.PlayWalkSfx();
+            }
+            if (!isGrounded)
+            {
+                au.footStepSource.Stop();
+            }
+        }
+        else
+        {
+            au.footStepSource.Stop();
         }
 
         playerAnimator.SetFloat("Speed", rigidbody2d.velocity.magnitude);
@@ -154,6 +168,7 @@ public class playerController : MonoBehaviour
             if (dashGapSeconds <= 0)
             {
                 StartCoroutine(Dash(horizontal));
+                au.PlaySfx(au.PlayerDash);
                 dashGapSeconds = dashGap;
             }
         }
@@ -176,6 +191,7 @@ public class playerController : MonoBehaviour
             if ((isGrounded || !doubleJumpUsed) && !isWallSliding)
             {
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
+                au.PlaySfx(au.PlayerJump);
 
                 if (!isGrounded)
                 {
@@ -193,6 +209,7 @@ public class playerController : MonoBehaviour
         {
             if (isWallSliding)
             {
+                au.PlaySfx(au.PlayerJump);
                 isWallJumping = true;
                 doubleJumpUsed = false;
                 playerAnimator.SetBool("isWallJumping", true);
@@ -269,10 +286,10 @@ public class playerController : MonoBehaviour
         while (elapsedTime < dashTime)
         {
             elapsedTime += Time.deltaTime;
-            Collider2D[] hits_1 = Physics2D.OverlapCircleAll(transform.position, 1.0f);
+            Collider2D[] hits_1 = Physics2D.OverlapCircleAll(transform.position, 10.0f);
             foreach (var hit in hits_1)
             {
-                if (hit.CompareTag("Monster"))
+                if (hit.gameObject.CompareTag("Monster"))
                 {
                     Collider2D monsterCollider = hit.GetComponent<Collider2D>();
                     if (monsterCollider != null)
@@ -290,10 +307,10 @@ public class playerController : MonoBehaviour
         rigidbody2d.gravityScale = originalGravity;
 
         // Ensure collisions are re-enabled
-        Collider2D[] hits_2 = Physics2D.OverlapCircleAll(transform.position, 5.0f);
+        Collider2D[] hits_2 = Physics2D.OverlapCircleAll(transform.position, 20.0f);
         foreach (var hit in hits_2)
         {
-            if (hit.CompareTag("Monster"))
+            if (hit.gameObject.CompareTag("Monster"))
             {
                 Collider2D monsterCollider = hit.GetComponent<Collider2D>();
                 if (monsterCollider != null)
@@ -313,8 +330,14 @@ public class playerController : MonoBehaviour
                 return;
 
             playerAnimator.SetTrigger("isHit");
+            au.PlaySfx(au.PlayerHurted);
             isInvincible = true;
             invincibleTimer = timeInvincible;
+        }
+
+        if (amount > 0)
+        {
+            au.PlaySfx(au.playerHeal);
         }
 
         healthSystem.AddToCurrentHealth(amount);
@@ -348,6 +371,7 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             InventoryManager.instance.useItem(2);
+
             gapBetweenUseItemTimer = timeGapBetweenUseItem;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))

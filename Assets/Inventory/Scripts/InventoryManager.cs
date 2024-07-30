@@ -32,6 +32,8 @@ public class InventoryManager : MonoBehaviour
 
     public List<GameObject> slots = new List<GameObject>(); // used to store the slots
 
+    public audio au;
+
     void Awake()
     {
         if (instance != null)
@@ -80,16 +82,19 @@ public class InventoryManager : MonoBehaviour
                 {
                     Instantiate(arrowTowerPrefab, playerRb.position + playerController.instance.lookDirection.normalized * 2f, Quaternion.identity);
                     magicController.instance.changeMagic(-2);
+                    au.PlaySfx(au.atkTowerPut);
                 }
                 else if (foundItem.name == "buffTower")
                 {
                     Instantiate(buffTowerPrefab, playerRb.position + playerController.instance.lookDirection.normalized * 2f, Quaternion.identity);
                     magicController.instance.changeMagic(-1);
+                    au.PlaySfx(au.TurretPut);
                 }
                 else if (foundItem.name == "iceTower")
                 {
                     Instantiate(iceTowerPrefab, playerRb.position + playerController.instance.lookDirection.normalized * 2f, Quaternion.identity);
                     magicController.instance.changeMagic(-2);
+                    au.PlaySfx(au.TurretPut);
                 }
                 else
                 {

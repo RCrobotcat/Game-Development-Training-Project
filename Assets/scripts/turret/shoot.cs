@@ -31,6 +31,10 @@ public class shoot : MonoBehaviour
     private float SpeedBost = 0;//加成子弹飞行速度
     private float Stspeed = 0;//加成攻击速度
 
+    public PolygonCollider2D TowerCollider2d;
+
+    public audio au;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +44,14 @@ public class shoot : MonoBehaviour
         enemy = new List<GameObject>();
         turret = transform.GetChild(0);
         InvokeRepeating("Blood_loss", 1, 1);//流血的时间控制
+
+        au = GameObject.FindGameObjectWithTag("Audio").GetComponent<audio>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        ignoreCollisionOfMonster();
 
         if (enemy.Count > 0)
         {
@@ -66,6 +73,7 @@ public class shoot : MonoBehaviour
         shootTimer += Time.deltaTime;
         if (shootTimer > (shootDuration - Stspeed))
         {
+            au.PlaySfx(au.TurretATK);
             Shooting();
             shootTimer = 0;
         }
@@ -159,6 +167,22 @@ public class shoot : MonoBehaviour
     public void TakeDamage(int damage)//受伤函数
     {
         Chp -= damage;
+    }
+
+    private void ignoreCollisionOfMonster()
+    {
+        Collider2D[] hits_1 = Physics2D.OverlapCircleAll(transform.position, 10.0f);
+        foreach (var hit in hits_1)
+        {
+            if (hit.gameObject.CompareTag("Monster"))
+            {
+                CapsuleCollider2D monsterCollider = hit.GetComponent<CapsuleCollider2D>();
+                if (monsterCollider != null)
+                {
+                    Physics2D.IgnoreCollision(monsterCollider, TowerCollider2d, true);
+                }
+            }
+        }
     }
 }
 

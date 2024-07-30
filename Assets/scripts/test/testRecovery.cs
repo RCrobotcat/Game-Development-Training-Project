@@ -10,9 +10,9 @@ public class testRecovery : MonoBehaviour
         {
             playerController.instance.ChangeHealth(1);
         }
-        if (collision.gameObject.CompareTag("Monster"))
+        /*if (collision.gameObject.CompareTag("Monster"))
         {
             Enemy.instance.TakeDamage(1);
-        }
+        }*/
     }
 }

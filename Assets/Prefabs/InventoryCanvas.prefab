@@ -207,6 +207,7 @@ MonoBehaviour:
   CDshadow: {fileID: 7290579400811515991}
   playerRb: {fileID: 0}
   slots: []
+  au: {fileID: 0}
 --- !u!1 &2087644980601673290
 GameObject:
   m_ObjectHideFlags: 0

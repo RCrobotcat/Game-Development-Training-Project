@@ -6,6 +6,9 @@ public class Skeleton : Enemy
 {
     public GameObject ExplosionRange;
     private Animator anim;
+
+    public audio au;
+
     protected override void Awake()
     {
         base.Awake();
@@ -13,15 +16,15 @@ public class Skeleton : Enemy
     }
     private void OnTriggerStay2D(Collider2D other) //自爆小兵用
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             isStop = true;
             movementSpeed = 0;
-            anim.SetBool("isExplosion",true);
+            anim.SetBool("isExplosion", true);
             StartCoroutine(OnDead());
         }
     }
-    private IEnumerator OnDead( )              //携程
+    private IEnumerator OnDead()              //携程
     {
         yield return new WaitForSeconds(1.09f);   //WaitForSeconds等待一个秒数
         {
@@ -31,5 +34,16 @@ public class Skeleton : Enemy
     public void OnDestroy()
     {
         Destroy(this.gameObject);
+    }
+
+    public void PlayExplosionSfx()
+    {
+        au.SfxAudio.Stop();
+        au.PlaySfx(au.MonsterExplode);
+    }
+
+    public void playFuseSfx()
+    {
+        au.PlaySfx(au.MonsterHurted);
     }
 }
