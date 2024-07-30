@@ -342,11 +342,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<<< HEAD:Assets/Scenes/testScene.unity
-  m_LocalPosition: {x: -5.0718155, y: 1.2859538, z: -10}
-========
+<<<<<<<< HEAD:Assets/Scenes/testScene2.unity
   m_LocalPosition: {x: -2.3007667, y: 1.2914102, z: -10}
->>>>>>>> 82833d0 (Added 3 monsters, added maps.):Assets/Scenes/testScene2.unity
+========
+  m_LocalPosition: {x: -5.0718155, y: 1.2859538, z: -10}
+>>>>>>>> 0e57ff5f489d6dc4125035c56b6048c454365c6b:Assets/Scenes/testScene.unity
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2228,11 +2228,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767630142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<<< HEAD:Assets/Scenes/testScene.unity
-  m_LocalPosition: {x: -13.41, y: 0.03, z: -10}
-========
+<<<<<<<< HEAD:Assets/Scenes/testScene2.unity
   m_LocalPosition: {x: -2.3, y: 0.93, z: -10}
->>>>>>>> 82833d0 (Added 3 monsters, added maps.):Assets/Scenes/testScene2.unity
+========
+  m_LocalPosition: {x: -13.41, y: 0.03, z: -10}
+>>>>>>>> 0e57ff5f489d6dc4125035c56b6048c454365c6b:Assets/Scenes/testScene.unity
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4170,68 +4170,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-<<<<<<<< HEAD:Assets/Scenes/testScene.unity
---- !u!1001 &1116889885966552882
-========
+<<<<<<<< HEAD:Assets/Scenes/testScene2.unity
 --- !u!1001 &852875336238911228
->>>>>>>> 82833d0 (Added 3 monsters, added maps.):Assets/Scenes/testScene2.unity
+========
+--- !u!1001 &1116889885966552882
+>>>>>>>> 0e57ff5f489d6dc4125035c56b6048c454365c6b:Assets/Scenes/testScene.unity
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<<< HEAD:Assets/Scenes/testScene.unity
-    - target: {fileID: 1116889885809444108, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_Name
-      value: buffTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444108, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-========
+<<<<<<<< HEAD:Assets/Scenes/testScene2.unity
     - target: {fileID: 852875334958452691, guid: 65a0ec6f33b062b4eb7443748220c3d8, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4342,16 +4292,66 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 935051577304275341, guid: 78122f7df8afcfb40bf0c773ef424134, type: 3}
->>>>>>>> 82833d0 (Added 3 monsters, added maps.):Assets/Scenes/testScene2.unity
+========
+    - target: {fileID: 1116889885809444108, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_Name
+      value: buffTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444108, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116889885809444210, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+>>>>>>>> 0e57ff5f489d6dc4125035c56b6048c454365c6b:Assets/Scenes/testScene.unity
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-<<<<<<<< HEAD:Assets/Scenes/testScene.unity
-  m_SourcePrefab: {fileID: 100100000, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
-========
+<<<<<<<< HEAD:Assets/Scenes/testScene2.unity
   m_SourcePrefab: {fileID: 100100000, guid: 78122f7df8afcfb40bf0c773ef424134, type: 3}
->>>>>>>> 82833d0 (Added 3 monsters, added maps.):Assets/Scenes/testScene2.unity
+========
+  m_SourcePrefab: {fileID: 100100000, guid: f58099bb48b2d9043a3df02bc26e2496, type: 3}
+>>>>>>>> 0e57ff5f489d6dc4125035c56b6048c454365c6b:Assets/Scenes/testScene.unity
 --- !u!1001 &3448675414874318259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4373,19 +4373,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3448675415339398957, guid: eaba0295d7fa23448a911b476e63a197, type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<<< HEAD:Assets/Scenes/testScene.unity
-      value: -13.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448675415339398957, guid: eaba0295d7fa23448a911b476e63a197, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.03
-========
+<<<<<<<< HEAD:Assets/Scenes/testScene2.unity
       value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 3448675415339398957, guid: eaba0295d7fa23448a911b476e63a197, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.93
->>>>>>>> 82833d0 (Added 3 monsters, added maps.):Assets/Scenes/testScene2.unity
+========
+      value: -13.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448675415339398957, guid: eaba0295d7fa23448a911b476e63a197, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+>>>>>>>> 0e57ff5f489d6dc4125035c56b6048c454365c6b:Assets/Scenes/testScene.unity
       objectReference: {fileID: 0}
     - target: {fileID: 3448675415339398957, guid: eaba0295d7fa23448a911b476e63a197, type: 3}
       propertyPath: m_LocalPosition.z
