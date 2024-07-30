@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Skeleton : Enemy
 {
+    public GameObject ExplosionRange;
     private Animator anim;
     protected override void Awake()
     {
@@ -14,6 +15,7 @@ public class Skeleton : Enemy
     {
         if (other.gameObject.tag == "Player")
         {
+            isStop = true;
             movementSpeed = 0;
             anim.SetBool("isExplosion",true);
             StartCoroutine(OnDead());
@@ -21,7 +23,13 @@ public class Skeleton : Enemy
     }
     private IEnumerator OnDead( )              //携程
     {
-        yield return new WaitForSeconds(1f);   //WaitForSeconds等待一个秒数
+        yield return new WaitForSeconds(1.09f);   //WaitForSeconds等待一个秒数
+        {
+            ExplosionRange.SetActive(true);
+        }
+    }
+    public void OnDestroy()
+    {
         Destroy(this.gameObject);
     }
 }

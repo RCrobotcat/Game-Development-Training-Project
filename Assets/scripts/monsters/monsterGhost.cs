@@ -27,8 +27,9 @@ public class monsterGhost : MonoBehaviour
     int currentHealth;
     public int health { get { return currentHealth; } }
 
-    public Text healthText;
-    public GameObject healthTextGameObject;
+    [Header("生命字体")]
+    public Text healthText;          //生命字体
+    public GameObject healthTextGameObject; //
     float textTimer = 2.0f;
     float textTimerSeconds;
 
@@ -41,7 +42,6 @@ public class monsterGhost : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();    

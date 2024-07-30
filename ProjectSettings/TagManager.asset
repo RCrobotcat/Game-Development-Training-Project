@@ -7,8 +7,6 @@ TagManager:
   - Fire
   - Ground
   - Monster
-  - shooter
-  - Kicker_Tower
   layers:
   - Default
   - TransparentFX
@@ -18,8 +16,8 @@ TagManager:
   - UI
   - Wall
   - Player
-  - Tower
-  - 
+  - Ground
+  - Enemy
   - 
   - 
   - 
@@ -45,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 3476772335
+    locked: 0
+  - name: Middle
+    uniqueID: 2958526021
+    locked: 0
+  - name: Front
+    uniqueID: 2512802143
+    locked: 0
+  - name: Player
+    uniqueID: 2878895109
     locked: 0

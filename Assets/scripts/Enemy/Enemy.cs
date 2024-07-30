@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    //接口
+    public static Enemy instance { get; private set; }
+    public float health { get { return health_Current; } }
+
     [Header("基础参数")]
     public float movementSpeed;         //移动速度
     public Vector2 dir;                 //怪物与角色之间的差值
@@ -25,29 +30,64 @@ public class Enemy : MonoBehaviour
     [Header("状态检测")]
    // public bool isPlayerJump;           //玩家是否在跳跃
     public bool isGround;                 //怪物是否在地面
+    public bool isDead;                  //是否死亡
+    public bool isStop;                  //禁止移动
 
-    private Rigidbody2D rb;
-    public Transform playerTransform; //获取人物坐标
+    [Header("生命字体")]
+    public Text healthText;          //生命字体
+    public GameObject healthTextGameObject; 
+    float textTimer = 2.0f;
+    float textTimerSeconds;
+
+    protected  Rigidbody2D rb;
+    private GameObject playerObject; //获取人物坐标
+    private Transform playerTransform;
     private Transform enemyTransform;  //获取自身坐标
-    private RaycastHit2D hit;         //射线检测
+    public RaycastHit2D hit;         //射线检测
+    private SpriteRenderer sprite;    //精灵
+    private Animator anim;          //动画器 
 
     protected virtual void Awake()
     {
+        instance = this;
         rb = GetComponent<Rigidbody2D>();
         enemyTransform = GetComponent<Transform>();
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        playerObject = GameObject.FindWithTag("Player");
+        playerTransform = playerObject.transform;
         health_Current = health_Max;  //赋予满血
+        textTimerSeconds = textTimer;
     }
-    private void Update()
+    protected virtual void Update()
     {
-        hit = Physics2D.Raycast(rb.position, Vector2.up, 10f, LayerMask.GetMask("Player")); //射线检测
-        Check();
-        TurnBack();
-        if(hit && isGround)
-          Jump();
+        if(!isStop)
+        {
+            hit = Physics2D.Raycast(rb.position, Vector2.up, 10f, LayerMask.GetMask("Player")); //射线检测
+            Check();
+            TurnBack();
+            if (hit && isGround)
+                Jump();
+        }
     }
     private void FixedUpdate()
     { 
+        if(!isStop)
          PatrolMove();
+        if (textTimerSeconds > 0)  //伤害字体消失
+        {
+            textTimerSeconds -= Time.deltaTime;
+        }
+        else
+        {
+            healthTextGameObject.SetActive(false);
+            textTimerSeconds = textTimer;
+        }
+        if (isDead == true)  //如果死亡就无法进行任何操作
+        {
+            isStop = true;
+            anim.SetBool("isDead", true);
+        }  
     }
     #region 调用方法
     private void PatrolMove() //追击
@@ -58,22 +98,27 @@ public class Enemy : MonoBehaviour
     private void TurnBack() //转身
     {
         if (dir.x < 0) {
-            enemyTransform.localScale = new Vector3(-1, 1, 1);
+            sprite.flipX = true;
         }
         if (dir.x > 0)
         {
-            enemyTransform.localScale = new Vector3(1,1,1);
+            sprite.flipX = false;
         }
     }
     private void Jump()   //跳跃
     {
          rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
-   private void Check()
+   private void Check()  //检测
     {
         //isPlayerJump = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(offset.x * transform.localScale.x, offset.y), checkRaduis, playerLayer);  //玩家是否在头上检测
         isGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(BottomOffset.x * transform.localScale.x, BottomOffset.y), checkRaduis_bottom, groundLayer); //地面检测
     }
+    public void OnDestroy_Died()
+    {
+        Destroy(this.gameObject);
+    }
+
     #endregion
     private void OnDrawGizmosSelected() //绘制检测范围
     {
@@ -81,4 +126,17 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)transform.position + new Vector2(BottomOffset.x, BottomOffset.y), checkRaduis_bottom);
     }
 
+    public void TakeDamage(int damage)
+    {
+        health_Current -= damage;
+        anim.SetTrigger("isHit");
+
+        healthText.text = health_Current.ToString() + "/" + health_Max.ToString();
+        healthTextGameObject.SetActive(true);
+
+        if (health_Current <= 0)
+        {
+            isDead = true;
+        }
+    }
 }
