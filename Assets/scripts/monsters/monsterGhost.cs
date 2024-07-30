@@ -35,7 +35,6 @@ public class monsterGhost : MonoBehaviour
     private int iceTime;
     private float icespeed;
 
-    private bool isice = true;
     public SpriteRenderer spriteRenderer;
     private void Awake()
     {

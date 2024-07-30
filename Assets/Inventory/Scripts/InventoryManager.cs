@@ -22,6 +22,14 @@ public class InventoryManager : MonoBehaviour
 
     int discardIndex;
 
+    public GameObject arrowTowerPrefab;
+    public GameObject buffTowerPrefab;
+    public GameObject iceTowerPrefab;
+
+    public GameObject CDshadow; // used to store the CD shadow
+
+    public Rigidbody2D playerRb;
+
     public List<GameObject> slots = new List<GameObject>(); // used to store the slots
 
     void Awake()
@@ -60,16 +68,49 @@ public class InventoryManager : MonoBehaviour
     }
 
     // use the item
-    public void useItem()
+    public void useItem(int itemIndex)
     {
-        return;
+        item foundItem = MyInventory.items[itemIndex];
+        if (foundItem != null)
+        {
+            if (magicController.instance.magicIsValid)
+            {
+                CDshadow.SetActive(true);
+                if (foundItem.name == "arrowTower")
+                {
+                    Instantiate(arrowTowerPrefab, playerRb.position + playerController.instance.lookDirection.normalized * 2f, Quaternion.identity);
+                    magicController.instance.changeMagic(-2);
+                }
+                else if (foundItem.name == "buffTower")
+                {
+                    Instantiate(buffTowerPrefab, playerRb.position + playerController.instance.lookDirection.normalized * 2f, Quaternion.identity);
+                    magicController.instance.changeMagic(-1);
+                }
+                else if (foundItem.name == "iceTower")
+                {
+                    Instantiate(iceTowerPrefab, playerRb.position + playerController.instance.lookDirection.normalized * 2f, Quaternion.identity);
+                    magicController.instance.changeMagic(-2);
+                }
+                else
+                {
+                    Debug.Log("Item not found");
+                }
+            }
+            else return;
+        }
     }
 
-    // remove the item from the inventory
+    // close the CD shadow
+    public void CDshadowClose()
+    {
+        CDshadow.SetActive(false);
+    }
+
+    /*// remove the item from the inventory
     public void discardItem()
     {
         return;
-    }
+    }*/
 
     public static void RefreshItem()
     {

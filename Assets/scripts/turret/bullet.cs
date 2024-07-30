@@ -11,7 +11,7 @@ public class bullet : MonoBehaviour
     private float speed;//子弹飞行速度
     private int atkValue;//攻击力
     private Vector2 direction;//方向
-    
+
     public void SetATKValue(int atkValue)//外部传入子弹数值的方法
     {
         this.atkValue = atkValue;
@@ -25,11 +25,6 @@ public class bullet : MonoBehaviour
     {
         this.direction = direction;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -41,11 +36,15 @@ public class bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)//子弹接触到敌人并销毁
     {
-        if(collision.tag == "enemy")
+        if (collision.gameObject.CompareTag("Monster"))
         {
             Destroy(this.gameObject);
-            
-            collision.GetComponent<monsterGhost>().TakeDamage(atkValue);
+
+            monsterGhost.instance.TakeDamage(atkValue);
+        }
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(this.gameObject);
         }
     }
 }

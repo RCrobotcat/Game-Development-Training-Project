@@ -30,6 +30,7 @@ public class shoot : MonoBehaviour
     private int AtkBost = 0;//加成攻击力
     private float SpeedBost = 0;//加成子弹飞行速度
     private float Stspeed = 0;//加成攻击速度
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,13 +39,13 @@ public class shoot : MonoBehaviour
         targetObject = null;
         enemy = new List<GameObject>();
         turret = transform.GetChild(0);
-        InvokeRepeating("Blood_loss", 1,1);//流血的时间控制
+        InvokeRepeating("Blood_loss", 1, 1);//流血的时间控制
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         if (enemy.Count > 0)
         {
             if (targetObject == null)
@@ -79,7 +80,7 @@ public class shoot : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)//敌人进入攻击范围,enemy指的是敌人tag
     {
-        if (other.tag == "enemy")
+        if (other.gameObject.CompareTag("Monster"))
         {
             if (!enemy.Contains(other.gameObject))
             {
@@ -87,13 +88,11 @@ public class shoot : MonoBehaviour
             }
 
         }
-
-
     }
 
     public void OnTriggerExit2D(Collider2D other)//敌人离开攻击范围
     {
-        if (other.tag == "enemy")
+        if (other.gameObject.CompareTag("Monster"))
         {
             if (targetObject != null && other.name == targetObject.name)
             {

@@ -354,9 +354,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTime: 2
   speed: 5
+  speed02: 0
   maxHealth: 10
   healthText: {fileID: 2063714112723664759}
   healthTextGameObject: {fileID: 8181035210586307398}
+  spriteRenderer: {fileID: 0}
 --- !u!95 &8480868955771403571
 Animator:
   serializedVersion: 5

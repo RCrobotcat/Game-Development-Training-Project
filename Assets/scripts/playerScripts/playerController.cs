@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -8,7 +9,7 @@ public class playerController : MonoBehaviour
     public static playerController instance { get; private set; }
 
     private float horizontal;
-    private Vector2 lookDirection = new Vector2(1, 0);
+    public Vector2 lookDirection = new Vector2(1, 0);
     public float speed = 7f; // Adjustable move speed
     public float jumpForce = 5f; // Adjustable jump force
 
@@ -47,8 +48,11 @@ public class playerController : MonoBehaviour
     float invincibleTimer;
     public float timeInvincible = 1f; // Adjustable invincible time
 
-    healthBarForPlayer healthBar;
-    HealthSystemForDummies healthSystem;
+    float gapBetweenUseItemTimer;
+    public float timeGapBetweenUseItem = 1f; // Adjustable gap time between using items
+
+    public healthBarForPlayer healthBar;
+    public HealthSystemForDummies healthSystem;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -65,8 +69,6 @@ public class playerController : MonoBehaviour
 
     private void Awake()
     {
-        healthSystem = GetComponent<HealthSystemForDummies>();
-        healthBar = GetComponentInChildren<healthBarForPlayer>();
         instance = this;
     }
 
@@ -112,6 +114,14 @@ public class playerController : MonoBehaviour
 
         WallSlide();
         handleWallJump();
+
+        // Use item logic, contains the gap time between using items
+        if (gapBetweenUseItemTimer > 0)
+        {
+            gapBetweenUseItemTimer -= Time.deltaTime;
+        }
+
+        handleItemUsed();
 
         if (Mathf.Abs(rigidbody2d.velocity.y) > 0.1f)
         {
@@ -294,7 +304,6 @@ public class playerController : MonoBehaviour
         }
     }
 
-
     public void ChangeHealth(int amount)
     {
         /*Debug.Log("ChangeHealth: " + amount);*/
@@ -316,6 +325,40 @@ public class playerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             healthSystem.Kill();
+        }
+    }
+
+    private void handleItemUsed()
+    {
+        if (gapBetweenUseItemTimer > 0)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            InventoryManager.instance.useItem(0);
+            gapBetweenUseItemTimer = timeGapBetweenUseItem;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            InventoryManager.instance.useItem(1);
+            gapBetweenUseItemTimer = timeGapBetweenUseItem;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            InventoryManager.instance.useItem(2);
+            gapBetweenUseItemTimer = timeGapBetweenUseItem;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            InventoryManager.instance.useItem(3);
+            gapBetweenUseItemTimer = timeGapBetweenUseItem;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            InventoryManager.instance.useItem(4);
+            gapBetweenUseItemTimer = timeGapBetweenUseItem;
         }
     }
 }
