@@ -115,14 +115,14 @@ public class Enemy : MonoBehaviour
     }
     public void OnDestroy_Died()
     {
-        /*// 50%几率掉落红心(可恢复血量和专注值)
+        // 40%几率掉落红心(可恢复血量和专注值)
         int dropHealthRate = Random.Range(1, 11);
-        if (dropHealthRate <= 6)
+        if (dropHealthRate <= 4)
         {
             Instantiate(healthCollectable, gameObject.transform.position, Quaternion.identity);
-        }*/
+        }
 
-        Instantiate(healthCollectable, gameObject.transform.position, Quaternion.identity);
+        /*Instantiate(healthCollectable, gameObject.transform.position, Quaternion.identity);*/
 
         EnemySystem.AddScore(1);
 

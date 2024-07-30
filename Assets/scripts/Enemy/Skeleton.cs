@@ -31,10 +31,10 @@ public class Skeleton : Enemy
             ExplosionRange.SetActive(true);
         }
     }
-    public void OnDestroy()
+    /*public void OnDestroy()
     {
         Destroy(this.gameObject);
-    }
+    }*/
 
     public void PlayExplosionSfx()
     {

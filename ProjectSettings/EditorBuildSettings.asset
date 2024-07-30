@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/BattleArena.unity
+    guid: f93d9df6b007ae441a21bcd86289c7b7
   m_configObjects: {}

@@ -12,6 +12,7 @@ TagManager:
   - Kicker_Tower
   - health
   - Audio
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Tower
   - Bullet
   - HeartAndMagic
-  - 
+  - NPC
   - 
   - 
   - 
@@ -69,6 +70,9 @@ TagManager:
     locked: 0
   - name: Bullet
     uniqueID: 3660585149
+    locked: 0
+  - name: NPC
+    uniqueID: 2076715363
     locked: 0
   - name: Enemy
     uniqueID: 58063413

@@ -190,7 +190,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 6200000, guid: 30a3cf7de5c0ccd46a0a49499c1be8e0, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -207,9 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f959fdcf48413b64287a74250275c8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 12
   dir: {x: 0, y: 0}
-  jumpForce: 1.5
+  jumpForce: 3.5
   checkRange: 10
   health_Max: 5
   health_Current: 0

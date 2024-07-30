@@ -16,7 +16,7 @@ public class healthCollectable : MonoBehaviour
             if (playerController.instance.health < playerController.instance.maxHealth || magicController.instance.magic < magicController.instance.maxMagic)
             {
                 playerController.instance.ChangeHealth(1);
-                magicController.instance.changeMagic(2);
+                /*magicController.instance.changeMagic(2);*/
                 Destroy(gameObject);
             }
             else return;

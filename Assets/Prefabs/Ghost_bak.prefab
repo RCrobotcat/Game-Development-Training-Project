@@ -362,9 +362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a96691819c80e04e82f76af9248cf5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 8
   dir: {x: 0, y: 0}
-  jumpForce: 1.2
+  jumpForce: 1.5
   checkRange: 5
   health_Max: 10
   health_Current: 0

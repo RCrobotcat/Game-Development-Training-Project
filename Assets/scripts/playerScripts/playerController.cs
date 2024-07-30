@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -55,6 +54,10 @@ public class playerController : MonoBehaviour
     public HealthSystemForDummies healthSystem;
 
     public audio au;
+
+    // Time to restore magic
+    public float timeRestoreMagic = 10f;
+    public float timeRestoreMagicSeconds;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -181,6 +184,16 @@ public class playerController : MonoBehaviour
             {
                 isInvincible = false;
             }
+        }
+
+        if (timeRestoreMagicSeconds > 0)
+        {
+            timeRestoreMagicSeconds -= Time.deltaTime;
+        }
+        else
+        {
+            magicController.instance.changeMagic(2);
+            timeRestoreMagicSeconds = timeRestoreMagic;
         }
     }
 
