@@ -10,7 +10,7 @@ public class monsterGhost : MonoBehaviour
 
     public float changeTime = 2.0f;
     public float speed = 5f;
-    public float speed02;
+    public float speed02;//å‡é€Ÿ
     bool left;
 
     Rigidbody2D rb;
@@ -27,21 +27,22 @@ public class monsterGhost : MonoBehaviour
     int currentHealth;
     public int health { get { return currentHealth; } }
 
-    [Header("ÉúÃü×ÖÌå")]
-    public Text healthText;          //ÉúÃü×ÖÌå
-    public GameObject healthTextGameObject; //
+    public Text healthText;
+    public GameObject healthTextGameObject;
     float textTimer = 2.0f;
     float textTimerSeconds;
 
     private int iceTime;
     private float icespeed;
 
+    private bool isice = true;
     public SpriteRenderer spriteRenderer;
     private void Awake()
     {
         instance = this;
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();    
@@ -129,15 +130,16 @@ public class monsterGhost : MonoBehaviour
         }
     }
 
-    public void decelerate(float speed02)
+    public void decelerate(float speed02)//å‡é€Ÿçš„æ–¹æ³•
     {
         Color newColor = new Color(0.6f,0.7f,0.9f);
         spriteRenderer.color = newColor;
         this.speed02 = speed02;
     }
-    public void color()
+    public void color()//è‰²è°ƒè¿˜åŸ
     {
         Color newColor = new Color(1, 1, 1);
         spriteRenderer.color = newColor;
     }
+
 }

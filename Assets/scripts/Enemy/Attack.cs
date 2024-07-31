@@ -6,9 +6,9 @@ public class Attack : MonoBehaviour
 {
     public int onAttcker;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D others)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (others.gameObject.CompareTag("Player"))
         {
             playerController.instance.ChangeHealth(onAttcker);
         }

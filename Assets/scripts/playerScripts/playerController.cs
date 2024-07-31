@@ -55,20 +55,25 @@ public class playerController : MonoBehaviour
 
     public audio au;
 
+    public bool isDead;
+
     // Time to restore magic
     public float timeRestoreMagic = 10f;
     public float timeRestoreMagicSeconds;
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            ChangeHealth(-1);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             ResetJump();
-        }
-
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-            ChangeHealth(-1);
         }
     }
 
@@ -87,6 +92,7 @@ public class playerController : MonoBehaviour
         ResetJump();
 
         currentHealth = maxHealth;
+        isWallJumping = false;
     }
 
     // Update is called once per frame
@@ -235,6 +241,8 @@ public class playerController : MonoBehaviour
     {
         isGrounded = true;
         doubleJumpUsed = false;
+        isWallSliding = false;
+        isWallJumping = false;
     }
 
     private void UpdateWallCheck()
@@ -360,6 +368,7 @@ public class playerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            isDead = true;
             healthSystem.Kill();
         }
     }

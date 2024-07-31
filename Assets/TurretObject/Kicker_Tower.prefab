@@ -155,11 +155,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3243165634866535076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dac1554c969119744b3841541492a6cc, type: 3}
+  m_Script: {fileID: 11500000, guid: fc3c95890a91bf04c9d0cda633a9a3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addhp: 1
-  Hp: 10
+  addhp: 0
+  Hp: 5
   TowerCollider2d: {fileID: 2682298490289839247}
 --- !u!60 &2682298490289839247
 PolygonCollider2D:

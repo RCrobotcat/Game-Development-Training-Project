@@ -48,7 +48,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 12
 --- !u!114 &852875334351278609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 852875334958452690}
   - component: {fileID: 852875334958452689}
   - component: {fileID: 852875334958452694}
-  - component: {fileID: 852875334958452693}
+  - component: {fileID: 5286081190558661169}
   - component: {fileID: 852875334958452684}
   - component: {fileID: 4130437749656676701}
   m_Layer: 9
@@ -141,7 +141,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 58063413
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -118907959, guid: 5fb4449f586775a4fa2682d840f2b8b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -186,7 +186,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
@@ -195,7 +195,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &852875334958452693
+--- !u!114 &5286081190558661169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 852875334958452692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f959fdcf48413b64287a74250275c8b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8615d7994773d4b47b23251a948e8088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 12
@@ -213,7 +213,7 @@ MonoBehaviour:
   checkRange: 10
   health_Max: 5
   health_Current: 0
-  BottomOffset: {x: 0.1, y: -1}
+  BottomOffset: {x: 0, y: -1}
   checkRaduis_bottom: 0.1
   groundLayer:
     serializedVersion: 2

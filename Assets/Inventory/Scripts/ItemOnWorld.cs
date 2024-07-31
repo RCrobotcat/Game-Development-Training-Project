@@ -23,12 +23,12 @@ public class ItemOnWorld : MonoBehaviour
                 /*if (!thisItem.isPickedUp)
                 {*/
                 Destroy(gameObject);
-                thisItem.isPickedUp = true;
-                /*}
-                else
-                {
-                    Debug.Log("This projectile have already existed in your inventory.");
-                }*/
+                /*thisItem.isPickedUp = true;
+            }
+            else
+            {
+                Debug.Log("This projectile have already existed in your inventory.");
+            }*/
             }
         }
     }

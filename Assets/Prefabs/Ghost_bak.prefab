@@ -280,7 +280,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 58063413
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -477264024, guid: 507c04303c520374bb9e1cecddfde6a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -305,7 +305,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
@@ -359,14 +359,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8480868955771403528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a96691819c80e04e82f76af9248cf5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 266888f6e3133a64798bf196a51a5d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 8
   dir: {x: 0, y: 0}
   jumpForce: 1.5
   checkRange: 5
-  health_Max: 10
+  health_Max: 15
   health_Current: 0
   BottomOffset: {x: 0.2, y: -0.9}
   checkRaduis_bottom: 0.1

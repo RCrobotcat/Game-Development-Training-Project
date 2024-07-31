@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,43 +7,43 @@ public class Enemy : MonoBehaviour
 {
     public float health { get { return health_Current; } }
 
-    [Header("»ù´¡²ÎÊı")]
-    public float movementSpeed;         //ÒÆ¶¯ËÙ¶È             //±£´æÔ­Ê¼ËÙ¶È
-    public Vector2 dir;                 //¹ÖÎïÓë½ÇÉ«Ö®¼äµÄ²îÖµ
-    public float jumpForce;             //ÌøÔ¾Á¦
-    public float checkRange;            //¼ì²â·¶Î§£ºÍæ¼ÒÌøÔ¾¹ÖÎïÒ²»á¸ú×ÅÌø
-    public float health_Max;            //ÂúÑª
-    public float health_Current;       //µ±Ç°ÑªÁ¿
+    [Header("åŸºç¡€å‚æ•°")]
+    public float movementSpeed;         //ç§»åŠ¨é€Ÿåº¦             //ä¿å­˜åŸå§‹é€Ÿåº¦
+    public Vector2 dir;                 //æ€ªç‰©ä¸è§’è‰²ä¹‹é—´çš„å·®å€¼
+    public float jumpForce;             //è·³è·ƒåŠ›
+    public float checkRange;            //æ£€æµ‹èŒƒå›´ï¼šç©å®¶è·³è·ƒæ€ªç‰©ä¹Ÿä¼šè·Ÿç€è·³
+    public float health_Max;            //æ»¡è¡€
+    public float health_Current;       //å½“å‰è¡€é‡
 
-    // [Header("¸úËæÌøÔ¾²ÎÊı")]
-    // public Vector2 offset;              //½ÃÕıÎ»ÒÆ²î
-    // public float checkRaduis;          //¼ì²â°ë¾¶
-    // public LayerMask playerLayer;      //¼ì²âÍ¼²ã
+    // [Header("è·Ÿéšè·³è·ƒå‚æ•°")]
+    // public Vector2 offset;              //çŸ«æ­£ä½ç§»å·®
+    // public float checkRaduis;          //æ£€æµ‹åŠå¾„
+    // public LayerMask playerLayer;      //æ£€æµ‹å›¾å±‚
 
-    [Header("µØÃæ¼ì²â")]
-    public Vector2 BottomOffset;      //µØÃæ½ÃÕı
-    public float checkRaduis_bottom;   //¼ì²â°ë¾¶
-    public LayerMask groundLayer;      //¼ì²âÍ¼²ã
+    [Header("åœ°é¢æ£€æµ‹")]
+    public Vector2 BottomOffset;      //åœ°é¢çŸ«æ­£
+    public float checkRaduis_bottom;   //æ£€æµ‹åŠå¾„
+    public LayerMask groundLayer;      //æ£€æµ‹å›¾å±‚
 
-    [Header("×´Ì¬¼ì²â")]
-    // public bool isPlayerJump;           //Íæ¼ÒÊÇ·ñÔÚÌøÔ¾
-    public bool isGround;                 //¹ÖÎïÊÇ·ñÔÚµØÃæ
-    public bool isDead;                  //ÊÇ·ñËÀÍö
-    public bool isStop;                  //½ûÖ¹ÒÆ¶¯
+    [Header("çŠ¶æ€æ£€æµ‹")]
+    // public bool isPlayerJump;           //ç©å®¶æ˜¯å¦åœ¨è·³è·ƒ
+    public bool isGround;                 //æ€ªç‰©æ˜¯å¦åœ¨åœ°é¢
+    public bool isDead;                  //æ˜¯å¦æ­»äº¡
+    public bool isStop;                  //ç¦æ­¢ç§»åŠ¨
 
-    [Header("ÉúÃü×ÖÌå")]
-    public Text healthText;          //ÉúÃü×ÖÌå
+    [Header("ç”Ÿå‘½å­—ä½“")]
+    public Text healthText;          //ç”Ÿå‘½å­—ä½“
     public GameObject healthTextGameObject;
     float textTimer = 2.0f;
     float textTimerSeconds;
 
     protected Rigidbody2D rb;
-    private GameObject playerObject; //»ñÈ¡ÈËÎï×ø±ê
+    private GameObject playerObject; //è·å–äººç‰©åæ ‡
     private Transform playerTransform;
-    private Transform enemyTransform;  //»ñÈ¡×ÔÉí×ø±ê
-    public RaycastHit2D hit;         //ÉäÏß¼ì²â
-    private SpriteRenderer sprite;    //¾«Áé
-    private Animator anim;          //¶¯»­Æ÷ 
+    private Transform enemyTransform;  //è·å–è‡ªèº«åæ ‡
+    public RaycastHit2D hit;         //å°„çº¿æ£€æµ‹
+    private SpriteRenderer sprite;    //ç²¾çµ
+    private Animator anim;          //åŠ¨ç”»å™¨ 
     public GameObject healthCollectable;
 
     protected virtual void Awake()
@@ -54,14 +54,14 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         playerObject = GameObject.FindWithTag("Player");
         playerTransform = playerObject.transform;
-        health_Current = health_Max;  //¸³ÓèÂúÑª
+        health_Current = health_Max;  //èµ‹äºˆæ»¡è¡€
         textTimerSeconds = textTimer;
     }
     protected virtual void Update()
     {
         if (!isStop)
         {
-            hit = Physics2D.Raycast(rb.position, Vector2.up, 10f, LayerMask.GetMask("Player")); //ÉäÏß¼ì²â
+            hit = Physics2D.Raycast(rb.position, Vector2.up, 10f, LayerMask.GetMask("Player")); //å°„çº¿æ£€æµ‹
             Check();
             TurnBack();
             if (hit && isGround)
@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
     {
         if (!isStop)
             PatrolMove();
-        if (textTimerSeconds > 0)  //ÉËº¦×ÖÌåÏûÊ§
+        if (textTimerSeconds > 0)  //ä¼¤å®³å­—ä½“æ¶ˆå¤±
         {
             textTimerSeconds -= Time.deltaTime;
         }
@@ -81,19 +81,19 @@ public class Enemy : MonoBehaviour
             healthTextGameObject.SetActive(false);
             textTimerSeconds = textTimer;
         }
-        if (isDead == true)  //Èç¹ûËÀÍö¾ÍÎŞ·¨½øĞĞÈÎºÎ²Ù×÷
+        if (isDead == true)  //å¦‚æœæ­»äº¡å°±æ— æ³•è¿›è¡Œä»»ä½•æ“ä½œ
         {
             isStop = true;
             anim.SetBool("isDead", true);
         }
     }
-    #region µ÷ÓÃ·½·¨
-    private void PatrolMove() //×·»÷
+    #region è°ƒç”¨æ–¹æ³•
+    private void PatrolMove() //è¿½å‡»
     {
         dir = ((Vector2)playerTransform.position - (Vector2)rb.position).normalized;
         rb.velocity = new Vector2(dir.x * movementSpeed, rb.velocity.y);
     }
-    private void TurnBack() //×ªÉí
+    private void TurnBack() //è½¬èº«
     {
         if (dir.x < 0)
         {
@@ -104,18 +104,18 @@ public class Enemy : MonoBehaviour
             sprite.flipX = false;
         }
     }
-    private void Jump()   //ÌøÔ¾
+    private void Jump()   //è·³è·ƒ
     {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
-    private void Check()  //¼ì²â
+    private void Check()  //æ£€æµ‹
     {
-        //isPlayerJump = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(offset.x * transform.localScale.x, offset.y), checkRaduis, playerLayer);  //Íæ¼ÒÊÇ·ñÔÚÍ·ÉÏ¼ì²â
-        isGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(BottomOffset.x * transform.localScale.x, BottomOffset.y), checkRaduis_bottom, groundLayer); //µØÃæ¼ì²â
+        //isPlayerJump = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(offset.x * transform.localScale.x, offset.y), checkRaduis, playerLayer);  //ç©å®¶æ˜¯å¦åœ¨å¤´ä¸Šæ£€æµ‹
+        isGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(BottomOffset.x * transform.localScale.x, BottomOffset.y), checkRaduis_bottom, groundLayer); //åœ°é¢æ£€æµ‹
     }
     public void OnDestroy_Died()
     {
-        // 40%¼¸ÂÊµôÂäºìĞÄ(¿É»Ö¸´ÑªÁ¿ºÍ×¨×¢Öµ)
+        // 40%å‡ ç‡æ‰è½çº¢å¿ƒ(å¯æ¢å¤è¡€é‡å’Œä¸“æ³¨å€¼)
         int dropHealthRate = Random.Range(1, 11);
         if (dropHealthRate <= 4)
         {
@@ -130,7 +130,7 @@ public class Enemy : MonoBehaviour
     }
 
     #endregion
-    private void OnDrawGizmosSelected() //»æÖÆ¼ì²â·¶Î§
+    private void OnDrawGizmosSelected() //ç»˜åˆ¶æ£€æµ‹èŒƒå›´
     {
         //Gizmos.DrawWireSphere((Vector2)transform.position + new Vector2(offset.x,offset.y), checkRaduis);
         Gizmos.DrawWireSphere((Vector2)transform.position + new Vector2(BottomOffset.x, BottomOffset.y), checkRaduis_bottom);
