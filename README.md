@@ -1,6 +1,6 @@
 # Game-Development-Training-Project
-Game-Development-Training-Project
-Created By Unity.
+Game-Development-Training-Project Created By Unity.  
+(Spend 3 days to make)
 
 # In Game Pictures:
 ![In Game Pictures 1](https://github.com/RCrobotcat/Game-Development-Training-Project/blob/main/InGamePic/1.png)
